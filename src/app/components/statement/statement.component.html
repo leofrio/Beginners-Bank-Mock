@@ -1,0 +1,23 @@
+<section class="container">
+  <h2 class="title">Transactions</h2>
+  <table class="table">
+    <thead class="table__header">
+      <th class="table__header__content">#</th>
+      <th class="table__header__content">Date</th>
+      <th class="table__header__content">Value</th>
+      <th class="table__header__content">Destination</th>
+    </thead>
+    <tbody *ngIf="transactions?.length > 0; else emptyList">
+      <tr
+        class="table__row"
+        *ngFor="let transaction of transactions; let i = index"
+      >
+        <td class="table__content">{{ i + 1 }}</td>
+        <td class="table__content">{{ transaction?.date | date: "short" }}</td>
+        <td class="table__content">{{ transaction?.value }}</td>
+        <td class="table__content">{{ transaction?.destination }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyList> <p>no transactions were made!</p> </ng-template>
+</section>
